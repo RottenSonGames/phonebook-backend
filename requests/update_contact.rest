@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/contacts/67fcf2b76667e36d80f05453
+Content-Type: application/json
+
+{
+    "name": "Barack Obama",
+    "number": "6969-1023020"
+}
