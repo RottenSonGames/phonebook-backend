@@ -2,6 +2,26 @@ POST http://localhost:3001/api/contacts
 Content-Type: application/json
 
 {
-    "name": "Barack Obama",
-    "number": "1200-1023020"
+    "name": "Jason Mason",
+    "number": "859-291680"
+}
+
+###
+
+POST http://localhost:3001/api/contacts
+Content-Type: application/json
+
+{
+    "name": "Alexandria Ocasio-Cortez",
+    "number": "42-59920-11"
+}
+
+###
+
+POST http://localhost:3001/api/contacts
+Content-Type: application/json
+
+{
+    "name": "Delete Me Pls",
+    "number": "999-0100"
 }
