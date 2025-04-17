@@ -52,7 +52,7 @@ app.put('/api/contacts/:id', (request, response, next) => {
       contact.name = request.body.name
       contact.number = request.body.number
       return contact.save().then((updatedContact) => response.json(updatedContact))
-    })  
+    })
     .catch(error => next(error))
 })
 
@@ -63,25 +63,25 @@ app.delete('/api/contacts/:id', (request, response, next) => {
 })
 
 const unknownEndpoint = (request, response) => {
-    return response.status(404).send({error: 'unknown endpoint'})
+  return response.status(404).send({ error: 'unknown endpoint' })
 }
 app.use(unknownEndpoint)
 
 const errorHandler = (error, request, response, next) => {
-    console.log("error: ", error)
+  console.log('error: ', error)
 
-    if (error.name === 'CastError') return response.status(400).send({error: 'malformatted id'})
-    else if (error.name === 'ValidationError') {
-      console.log("error.errors: ", error.errors)
-      if (error.errors.name) {
-        return response.status(400).send({error: 'name must be at least three characters long'})
-      }
-      if (error.errors.number) {
-        return response.status(400).send({error: 'number does not follow correct format for Finnish numbers'})
-      }
-      return response.status(400).send({error: 'name or number missing'})
+  if (error.name === 'CastError') return response.status(400).send({ error: 'malformatted id' })
+  else if (error.name === 'ValidationError') {
+    console.log('error.errors: ', error.errors)
+    if (error.errors.name) {
+      return response.status(400).send({ error: 'name must be at least three characters long' })
     }
-    next(error)
+    if (error.errors.number) {
+      return response.status(400).send({ error: 'number does not follow correct format for Finnish numbers' })
+    }
+    return response.status(400).send({ error: 'name or number missing' })
+  }
+  next(error)
 }
 app.use(errorHandler)
 
